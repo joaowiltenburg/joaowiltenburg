@@ -17,7 +17,6 @@
 .thread-svg path { stroke:var(--accent); }
 .thread-svg .thread-line { stroke-width:4; }
 .thread-svg .thread-rail { stroke-width:1; transform:translateX(11px); opacity:.35; }
-.thread-svg .thread-branch { stroke:var(--warm); stroke-width:2; }
 .thread-svg circle { stroke:var(--accent); stroke-width:1.5; fill:var(--bg); }
 .thread-svg .thread-core { fill:var(--ink); stroke:none; }
 .thread-scene.scene-art-ready .thread-svg { opacity:0; }
@@ -100,18 +99,9 @@
 .education-choice i { height:1px; background:#4d6457; }
 .education-choice em { color:var(--muted); font:7px var(--font-mono),monospace; font-style:normal; text-transform:uppercase; }
 .education-choice p { margin-top:13px; max-width:405px; color:#9ea9a2; font-size:10px; line-height:1.65; }
-.parallel-note { position:absolute; right:8vw; bottom:80px; font-size:9px; color:var(--warm); max-width:300px; line-height:1.8; }
 .thread-artifact { position:relative; width:100%; max-width:500px; justify-self:center; padding-block:20px; }
 .artifact-coordinate { display:flex; justify-content:space-between; gap:14px; color:var(--muted); font:8px var(--font-mono),monospace; letter-spacing:.06em; padding-bottom:32px; }
 .artifact-coordinate > span { font-size:7px; }
-.origin-art { position:relative; min-height:470px; }
-.origin-code { position:absolute; inset:0; display:flex; align-items:center; gap:20px; }
-.code-bracket { font-size:clamp(120px,16vw,220px); font-weight:200; color:#4b6858; }
-.origin-code > div { position:absolute; left:20%; z-index:2; }
-.origin-art .mono { font-size:11px; color:#b5c9bd; }
-.origin-art strong { display:block; font-size:clamp(26px,3.2vw,48px); letter-spacing:-.05em; font-weight:400; margin:16px 0 22px; }
-.origin-art strong > span { color:var(--accent); }
-.closing { position:absolute; right:0; }
 .receipt-art { position:relative; padding:0 28px; min-height:510px; }
 .receipt-strip { display:flex; align-items:center; gap:14px; font-size:8px; color:var(--muted); margin-bottom:28px; }
 .receipt-strip i { height:1px; flex:1; background:#526358; }
@@ -137,8 +127,6 @@
 .browser-top { display:flex; align-items:center; gap:6px; }
 .browser-top i { width:4px; height:4px; border:1px solid #829b8e; border-radius:50%; }
 .browser-top span { margin-left:auto; font-size:7px; color:var(--muted); }
-.labs-letter { display:block; font-size:clamp(110px,17vw,240px); line-height:1.1; font-weight:400; letter-spacing:-.12em; color:#bed4c7; }
-.labs-letter span { color:#8b7552; }
 .labs-wordmark { font-size:30px; letter-spacing:-.05em; line-height:1.05; padding-bottom:32px; }
 .labs-mark { position:relative; width:58%; aspect-ratio:1; margin:20px 0 -82px auto; filter:grayscale(1) contrast(1.08); opacity:.9; }
 .labs-mark img { object-fit:cover; border-radius:22%; }
@@ -150,8 +138,6 @@
 .court-draw { stroke-dasharray:1; stroke-dashoffset:0; }
 .athlete-crest { position:absolute; right:4%; top:76px; width:33%; aspect-ratio:.69; filter:saturate(.72) contrast(1.04); opacity:.84; }
 .athlete-crest img { object-fit:contain; }
-.athlete-number { font-size:clamp(95px,15vw,215px); font-weight:400; letter-spacing:-.1em; line-height:1.2; color:#7b9988; }
-.athlete-number > span { color:#506656; font-size:.5em; vertical-align:middle; }
 .athlete-sheet { position:relative; z-index:2; width:68%; margin-top:242px; margin-left:20px; padding:24px; background:#e2e3d9; color:#283c2e; transform:rotate(-3deg); }
 .athlete-sheet > span { font-size:8px; }
 .athlete-sheet > div { display:flex; align-items:center; gap:20px; padding-top:17px; margin-top:16px; border-top:1px solid #adb7ac; }
@@ -188,17 +174,16 @@
 .thread-social a { display:flex; align-items:center; min-height:44px; }
 .final-map { justify-self:center; width:100%; max-width:430px; }
 .final-map > span { display:block; text-align:center; font-size:8px; color:var(--muted); }
-.thread-overview { height:580px; }
+.thread-overview { height:500px; }
 .thread-overview svg { height:100%; width:100%; overflow:visible; }
 .thread-overview path { stroke:var(--accent); stroke-width:5; fill:none; }
-.thread-overview .overview-branch { stroke:var(--warm); stroke-width:3; }
 .thread-overview circle { fill:var(--bg); stroke:var(--accent); stroke-width:5; }
 .thread-overview text { fill:var(--ink); font:76px var(--font-body),sans-serif; }
 .thread-overview a:hover circle,.thread-overview a:focus circle { fill:var(--accent); }
 .thread-overview a:focus-visible { outline:none; }
 .thread-overview a:focus-visible text { fill:var(--accent); text-decoration:underline; }
-.thread-experience[data-active-chapter="7"] .thread-scene { opacity:.2; }
-.final-signal { width:fit-content; margin:0 auto; padding:17px 20px 14px; border:1px solid #536c5d; background:#152019c2; text-align:center; transform:translateY(-22px) rotate(-2deg); }
+.thread-experience[data-active-chapter="6"] .thread-scene { opacity:.2; }
+.final-signal { width:fit-content; margin:18px auto 0; padding:17px 20px 14px; border:1px solid #536c5d; background:#152019c2; text-align:center; transform:rotate(-2deg); }
 .final-signal > span { display:block; color:var(--warm); font-size:7px; letter-spacing:.15em; }
 .final-signal strong { display:block; margin:11px 0 9px; color:#d8e1d9; font-size:26px; line-height:.85; letter-spacing:-.07em; font-weight:480; }
 .final-signal p { color:var(--accent); font-size:7px; letter-spacing:.1em; }
@@ -234,12 +219,7 @@
   .thread-chapter .thread-copy { max-width:500px; }
   .thread-body { max-width:420px; font-size:16px; }
   .project-dossier { max-width:500px; }
-  .parallel-note { position:relative; bottom:auto; right:auto; justify-self:end; }
-  .thread-artifact .origin-art strong { font-size:40px; }
-  .code-bracket { font-size:180px; }
   .receipt-paper > strong { font-size:52px; }
-  .labs-letter { font-size:210px; }
-  .athlete-number { font-size:170px; }
   .next-art > strong { font-size:110px; }
   .final-map { justify-self:end; max-width:440px; }
   .thread-overview { height:540px; }
@@ -273,10 +253,6 @@
   .dossier-flow > span { gap:9px; }
   .artifact-coordinate { font-size:7px; }
   .artifact-coordinate > span { font-size:6px; }
-  .origin-art { min-height:390px; }
-  .thread-artifact .origin-art strong { font-size:31px; }
-  .origin-art .mono { font-size:9px; }
-  .code-bracket { font-size:155px; }
   .school-stats > div { min-height:94px; padding:15px 8px; }
   .school-stats strong { font-size:32px; }
   .school-stats span { font-size:6px; }
@@ -291,7 +267,6 @@
   .recipe-panel { right:-12px; top:105px; width:70%; padding:18px 15px; }
   .recipe-panel > div { grid-template-columns:20px 1fr 26px; }
   .artifact-side-note { right:-13px; font-size:7px; }
-  .labs-letter { font-size:170px; }
   .labs-browser { padding-inline:18px; }
   .labs-mark { width:64%; margin-bottom:-65px; }
   .labs-baseline { font-size:6px; }
@@ -322,4 +297,3 @@
 @media(max-height:560px) and (min-width:901px) { .thread-intro { min-height:740px; } }
 html[data-motion=reduced] .thread-scene { opacity:.25; }
 html[data-motion=reduced] .project-dossier::details-content { transition:none; }
-html[data-motion=reduced] .origin-code { transform:translateX(-40px); }

@@ -3,9 +3,24 @@
 Direção 1 aprovada por João em 18/09/2026.
 
 Uma cena contínua acompanha o scroll. A abertura apresenta João no presente;
-o percurso aproxima seis capítulos, mostra ProRecipe e Alura/Labs em paralelo,
-reencontra os caminhos no primeiro freela, passa pela FIAP e chega à isla.
+o percurso aproxima cinco capítulos em ordem cronológica, de 2023 a 2026.
 O final afasta a câmera e mostra o percurso completo, próximo dos contatos.
+
+## Revisão narrativa de 20/09/2026
+
+A ordem antiga colocava o ProRecipe (2024) antes da Alura e da Wiltenburg Labs
+(2023) e tratava os dois como caminhos paralelos, com uma bifurcação no fio.
+João confirmou que a sequência é cronológica, então a bifurcação saiu e o fio
+voltou a ser uma linha só. Cada capítulo passou a exibir o ano e a terminar numa
+passagem que causa o próximo. O capítulo de abertura sobre a escola foi removido:
+o basquete agora entra em 2025, onde explica o primeiro cliente pago, e a
+história com o Reinaldo ficou no dossiê.
+
+Correções de fato: o NEXT da FIAP está em andamento, com resultado previsto para
+o fim de outubro de 2026, e a afirmação de finalista saiu de toda a página. A
+citação atribuída ao basquete foi removida porque não era real. A média de
+pontos virou "15+". O professor do Flamengo Guarulhos 3x3 é o Juneba; o Reinaldo
+foi o técnico da escola.
 
 Substitui a hero isolada, o mapa lateral, a seção Agora e a lista duplicada de projetos.
 Os detalhes dos projetos ficam dentro dos capítulos. As tecnologias gerais ficam

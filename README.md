@@ -1,6 +1,6 @@
 # João Wiltenburg · Um fio que atravessa tudo
 
-Portfólio narrativo. O scroll acompanha um percurso contínuo em 3D, atravessa seis capítulos e termina numa visão geral com contato. A escola apresenta tecnologia e basquete como formações paralelas. ProRecipe e Alura/Wiltenburg Labs aparecem em caminhos que se encontram no Flamengo 3x3, antes da escolha pela FIAP e da chegada à isla.
+Portfólio narrativo. O scroll acompanha um percurso contínuo em 3D, atravessa cinco capítulos em ordem cronológica e termina numa visão geral com contato. Cada capítulo mostra o ano e termina numa passagem que explica o capítulo seguinte: Alura e Wiltenburg Labs em 2023, ProRecipe em 2024, Flamengo 3x3 em 2025, FIAP com LockIN Fight no início de 2026 e a isla.to em maio de 2026. O basquete entra no capítulo de 2025, onde explica o primeiro cliente pago.
 
 ## Rodar
 

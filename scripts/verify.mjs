@@ -29,13 +29,14 @@ try {
       if (name === "desktop") await page.locator(".scene-art-ready canvas").waitFor({ timeout: 30000 });
       else assert.equal(await page.locator("canvas").count(), 0);
       assert.equal(await page.locator("h1").count(), 1);
-      assert.equal(await page.locator("[data-thread-step]").count(), 8);
-      assert.equal(await page.locator(".thread-chapter").count(), 6);
+      assert.equal(await page.locator("[data-thread-step]").count(), 7);
+      assert.equal(await page.locator(".thread-chapter").count(), 5);
       assert.equal(await page.locator(".thread-chapter .thread-project").count(), 5);
-      assert.equal(await page.locator(".thread-overview a").count(), 6);
-      assert.match(await page.locator("#capitulo-labs").innerText(), /Em paralelo[\s\S]*Alura[\s\S]*WordPress[\s\S]*Wiltenburg Labs/i);
-      assert.match(await page.locator("#capitulo-fiap .thread-copy").innerText(), /finalista no NEXT/);
-      assert.match(await page.locator("#capitulo-origem .school-dossier").textContent(), /Reinaldo[\s\S]*15[\s\S]*RANKING INDIVIDUAL/);
+      assert.equal(await page.locator(".thread-overview a").count(), 5);
+      assert.match(await page.locator("#capitulo-labs").innerText(), /2023[\s\S]*Alura[\s\S]*WordPress[\s\S]*Wiltenburg Labs/i);
+      assert.match(await page.locator("#capitulo-fiap .thread-copy").innerText(), /reta final do LockIN Fight/);
+      assert.doesNotMatch(await page.locator("main").innerText(), /finalista/i, "O NEXT ainda não tem resultado");
+      assert.match(await page.locator("#capitulo-atletas .school-dossier").textContent(), /Reinaldo[\s\S]*15\+[\s\S]*RANKING INDIVIDUAL/);
       assert.match(await page.locator("#capitulo-fiap .education-choice").innerText(), /2 FEDERAIS[\s\S]*distância[\s\S]*FIAP/i);
       assert.doesNotMatch(await page.locator("#inicio").innerText(), /ProRecipe|palha|14 mil/i);
       assert.doesNotMatch(await page.locator("main").innerText(), /Gutenberg|Meu Consultório|—/);
@@ -60,24 +61,25 @@ try {
       const after = await page.locator(".thread-svg").getAttribute("viewBox");
       if (options.reducedMotion === "reduce") assert.equal(after, before, "A preferência reduzida mantém a câmera estática");
       else assert.notEqual(after, before, "O percurso precisa responder continuamente ao scroll, antes da mudança de capítulo");
-      for (const [index, id] of ["origem", "proreceita", "labs", "atletas", "fiap", "isla"].entries()) {
+      for (const [index, id] of ["labs", "proreceita", "atletas", "fiap", "isla"].entries()) {
         await page.evaluate(id => document.getElementById(`capitulo-${id}`).scrollIntoView({ block: "start" }), id);
         await page.waitForFunction(index => document.querySelector(".thread-experience").dataset.activeChapter === String(index + 1), index);
         await page.waitForTimeout(1000);
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "Sem overflow horizontal");
         if (name === "desktop" || id === "proreceita") await page.screenshot({ path: `artifacts/thread-${name}-${id}.png` });
       }
-      await page.locator("#capitulo-atletas summary").focus();
+      const flamengo = page.locator("#capitulo-atletas details:not(.school-dossier)");
+      await flamengo.locator("summary").focus();
       await page.keyboard.press("Enter");
-      assert.ok(await page.locator("#capitulo-atletas details").getAttribute("open") !== null);
-      assert.match(await page.locator("#capitulo-atletas details").textContent(), /PROJETO PRIVADO[\s\S]*SISTEMA EM USO/);
+      assert.ok(await flamengo.getAttribute("open") !== null);
+      assert.match(await flamengo.textContent(), /PROJETO PRIVADO[\s\S]*SISTEMA EM USO/);
       await page.locator("#capitulo-fiap summary").focus();
       await page.keyboard.press("Enter");
       assert.match(await page.locator("#capitulo-fiap details").textContent(), /Formulário[\s\S]*BPM[\s\S]*Force Score[\s\S]*Phaser\.js[\s\S]*Arduino/);
       assert.equal(await page.locator('a[href="https://isla.to"]').count(), 1);
       assert.match(await page.locator(".final-signal").innerText(), /PRÓXIMO CAPÍTULO[\s\S]*EM[\s\S]*CONSTRUÇÃO[\s\S]*SÓ O COMEÇO/);
       await page.getByRole("link", { name: "Vamos conversar", exact: false }).first().click();
-      await page.waitForFunction(() => document.querySelector(".thread-experience").dataset.activeChapter === "7");
+      await page.waitForFunction(() => document.querySelector(".thread-experience").dataset.activeChapter === "6");
       await page.locator(".thread-stack summary").click();
       assert.match(await page.locator(".thread-stack").innerText(), /React[\s\S]*Python[\s\S]*WordPress/);
       assert.equal(await page.locator('a[href="mailto:wiltenburg.joao@gmail.com"]').count(), 1);

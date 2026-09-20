@@ -15,13 +15,9 @@ function Route({ progress, paused, onReady }: Omit<Props, "onError">) {
     const main = new THREE.CatmullRomCurve3([
       [0, 6, 0], [3, 5, -1], [3.5, 2, 1], [.5, -1, 0], [-2, 0, 2],
       [-1, 3, -1], [2, 2, 0], [4, -4, 1], threadPoints[1],
-      [-5.6, -15, -1.5], threadPoints[2], [-3.6, -27, 2],
-      threadPoints[4], [4.5, -40, -1.8], threadPoints[5],
-      [-3, -51, -1], threadPoints[6], [3, -61, 1.5], threadPoints[7],
-    ].map(p => new THREE.Vector3(...p as [number, number, number])));
-    const branch = new THREE.CatmullRomCurve3([
-      threadPoints[1], [7, -14, -2], [7, -20, 0], threadPoints[3],
-      [6.5, -29, -1.5], threadPoints[4],
+      [-5.6, -15, -1.5], threadPoints[2], [5, -25, -1.8],
+      threadPoints[3], [-4.5, -37, 1.5], threadPoints[4],
+      [5, -47, -1.5], threadPoints[5], [-3, -57, 1], threadPoints[6],
     ].map(p => new THREE.Vector3(...p as [number, number, number])));
     const marks = new Float32Array(180 * 3);
     for (let i = 0; i < 180; i++) {
@@ -31,9 +27,9 @@ function Route({ progress, paused, onReady }: Omit<Props, "onError">) {
     }
     const dots = new THREE.BufferGeometry();
     dots.setAttribute("position", new THREE.BufferAttribute(marks, 3));
-    return { main, tube: new THREE.TubeGeometry(main, 480, .095, 10, false), branch: new THREE.TubeGeometry(branch, 180, .035, 6, false), rail: new THREE.TubeGeometry(main, 480, .009, 4, false), dots };
+    return { main, tube: new THREE.TubeGeometry(main, 480, .095, 10, false), rail: new THREE.TubeGeometry(main, 480, .009, 4, false), dots };
   }, []);
-  useEffect(() => () => { geometry.tube.dispose(); geometry.branch.dispose(); geometry.rail.dispose(); geometry.dots.dispose(); }, [geometry]);
+  useEffect(() => () => { geometry.tube.dispose(); geometry.rail.dispose(); geometry.dots.dispose(); }, [geometry]);
   useFrame(({ camera, size }, delta) => {
     if (!notified.current) { notified.current = true; onReady(true); }
     const view = threadView(progress.current);
@@ -54,11 +50,10 @@ function Route({ progress, paused, onReady }: Omit<Props, "onError">) {
   });
   return <>
     <mesh geometry={geometry.tube}><meshStandardMaterial color="#b4cec0" metalness={.6} roughness={.28} /></mesh>
-    <mesh geometry={geometry.branch}><meshStandardMaterial color="#b8a887" metalness={.35} roughness={.4} /></mesh>
     <mesh geometry={geometry.rail} position={[.22, 0, -.15]}><meshBasicMaterial color="#456154" /></mesh>
     <points geometry={geometry.dots}><pointsMaterial size={.026} color="#526158" transparent opacity={.45} sizeAttenuation /></points>
-    {threadPoints.slice(1, 7).map((p, i) => <group key={i} position={p}>
-      <mesh rotation={[.18, -.2, .15]}><torusGeometry args={[.32, .022, 6, 40]} /><meshBasicMaterial color={i === 2 ? "#c9b899" : "#c0d7cc"} /></mesh>
+    {threadPoints.slice(1, -1).map((p, i) => <group key={i} position={p}>
+      <mesh rotation={[.18, -.2, .15]}><torusGeometry args={[.32, .022, 6, 40]} /><meshBasicMaterial color="#c0d7cc" /></mesh>
       <mesh position={[0, 0, -.12]}><circleGeometry args={[.21, 32]} /><meshBasicMaterial color="#17241e" /></mesh>
       <mesh position={[0, 0, .08]}><sphereGeometry args={[.07, 12, 8]} /><meshBasicMaterial color="#d8e7df" /></mesh>
     </group>)}
