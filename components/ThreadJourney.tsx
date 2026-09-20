@@ -125,9 +125,8 @@ export default function ThreadJourney({ age }: { age: number }) {
     </div>
     <main>
       <section id="inicio" className="thread-step thread-intro" data-thread-step aria-labelledby="thread-title">
-        <div className="thread-copy"><p className="thread-eyebrow mono"><span className="status-dot" />JOÃO WILTENBURG / GROWTH ENGINEER</p><h1 id="thread-title">Entre o código<br /><span>e o negócio.</span></h1><p className="thread-deck">Eu vivo a operação, sinto a dor e construo a ferramenta. Faço isso desde os 16.</p><motion.a href={`#capitulo-${threadChapters[0].id}`} className="thread-start" whileHover={animated ? { x: 5 } : undefined}>Siga o fio <span aria-hidden="true">↓</span></motion.a></div>
+        <div className="thread-copy"><p className="thread-eyebrow mono"><span className="status-dot" />JOÃO WILTENBURG / GROWTH ENGINEER</p><h1 id="thread-title">Oi, eu sou<br /><span>o João.</span></h1><p className="thread-deck">Tenho {age} anos, desenvolvo produto e growth na isla.to e estudo ADS na FIAP. Construo meus próprios projetos desde os 16. Essa é a minha história até aqui.</p><motion.a href={`#capitulo-${threadChapters[0].id}`} className="thread-start" whileHover={animated ? { x: 5 } : undefined}>Siga o fio <span aria-hidden="true">↓</span></motion.a></div>
         <div className="intro-route-label mono" aria-hidden="true"><span>2023 / 2026</span><i /><span>UMA COISA LEVOU À OUTRA</span></div>
-        <p className="intro-bottom mono">DESENVOLVO NA ISLA.TO<br />ESTUDO NA FIAP</p>
       </section>
       {threadChapters.map((chapter, index) => {
         const project = projects.find(project => project.id === chapter.project);
@@ -137,14 +136,14 @@ export default function ThreadJourney({ age }: { age: number }) {
             {chapter.id === "atletas" && <SchoolDossier />}
             {chapter.id === "fiap" && <aside className="education-choice" aria-label="Escolha pela FIAP depois de duas aprovações em universidades federais"><span className="mono">ENEM / UMA ESCOLHA REAL</span><div aria-hidden="true"><b>2 FEDERAIS</b><i /><em>distância</em><i /><strong>FIAP</strong></div><p>Duas aprovações abriram caminhos longe de casa. Escolhi uma formação que eu conseguia sustentar e seguir construindo.</p></aside>}
             {project && <ProjectDossier project={project} />}
-            {chapter.id === "isla" && <><p className="thread-personal">Tenho {age} anos. Estudo ADS na FIAP e sigo construindo meus próprios produtos.</p><a className="isla-public-link" href={profile.company.url} target="_blank" rel="noreferrer">Conhecer a isla.to <span aria-hidden="true">↗</span></a></>}
+            {chapter.id === "isla" && <><p className="thread-personal">Fora do trabalho, sigo construindo meus próprios produtos.</p><a className="isla-public-link" href={profile.company.url} target="_blank" rel="noreferrer">Conhecer a isla.to <span aria-hidden="true">↗</span></a></>}
           </div>
           <ThreadArtifact chapter={chapter.id} />
         </section>;
       })}
       <section id="contato" className="thread-step thread-finale" data-thread-step aria-labelledby="thread-contact-title">
         <div className="thread-copy"><p className="thread-eyebrow mono">0{total} / DAQUI EM DIANTE</p><h2 id="thread-contact-title">O caminho<br /><span>continua.</span></h2><p className="thread-body">Uma ideia, um problema interessante<br />ou uma boa conversa.</p><a className="thread-email" href={`mailto:${profile.contact.email}`}>Vamos conversar <span aria-hidden="true">↗</span></a><div className="thread-social"><a href={profile.contact.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={profile.contact.github} target="_blank" rel="noreferrer">GitHub ↗</a></div><details className="thread-project thread-stack"><summary>O que já usei pelo caminho <span aria-hidden="true">+</span></summary><div>{stackGroups.map(group => <div key={group.label}><h3>{group.label}</h3><p>{group.technologies.join(" · ")}</p></div>)}</div></details></div>
-        <div className="final-map"><span className="mono">CADA PONTO, UMA PARTE DA HISTÓRIA.</span><ThreadOverview /><div className="final-signal"><span className="mono">PRÓXIMO CAPÍTULO</span><strong>EM<br />CONSTRUÇÃO</strong><p className="mono">{age} ANOS / SÓ O COMEÇO</p></div></div>
+        <div className="final-map"><span className="mono">CADA PONTO, UMA PARTE DA HISTÓRIA.</span><ThreadOverview /><div className="final-signal"><span className="mono">PRÓXIMO CAPÍTULO</span><strong>EM<br />CONSTRUÇÃO</strong><p className="mono">SÓ O COMEÇO</p></div></div>
       </section>
     </main>
     <footer className="thread-footer"><span>João Wiltenburg</span><a href="#inicio">Voltar ao começo ↑</a></footer>
