@@ -143,7 +143,7 @@ export default function ThreadJourney({ age }: { age: number }) {
       })}
       <section id="contato" className="thread-step thread-finale" data-thread-step aria-labelledby="thread-contact-title">
         <div className="thread-copy"><p className="thread-eyebrow mono">0{total} / DAQUI EM DIANTE</p><h2 id="thread-contact-title">O caminho<br /><span>continua.</span></h2><p className="thread-body">Uma ideia, um problema interessante<br />ou uma boa conversa.</p><a className="thread-email" href={`mailto:${profile.contact.email}`}>Vamos conversar <span aria-hidden="true">↗</span></a><div className="thread-social"><a href={profile.contact.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={profile.contact.github} target="_blank" rel="noreferrer">GitHub ↗</a></div><details className="thread-project thread-stack"><summary>O que já usei pelo caminho <span aria-hidden="true">+</span></summary><div>{stackGroups.map(group => <div key={group.label}><h3>{group.label}</h3><p>{group.technologies.join(" · ")}</p></div>)}</div></details></div>
-        <div className="final-map"><span className="mono">CADA PONTO, UMA PARTE DA HISTÓRIA.</span><ThreadOverview /><div className="final-signal"><span className="mono">PRÓXIMO CAPÍTULO</span><strong>EM<br />CONSTRUÇÃO</strong><p className="mono">SÓ O COMEÇO</p></div></div>
+        <div className="final-map"><span className="mono">CADA PONTO, UMA PARTE DA HISTÓRIA.</span><ThreadOverview /></div>
       </section>
     </main>
     <footer className="thread-footer"><span>João Wiltenburg</span><a href="#inicio">Voltar ao começo ↑</a></footer>

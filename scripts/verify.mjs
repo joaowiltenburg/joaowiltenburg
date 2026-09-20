@@ -77,7 +77,7 @@ try {
       await page.keyboard.press("Enter");
       assert.match(await page.locator("#capitulo-fiap details").textContent(), /Formulário[\s\S]*BPM[\s\S]*Force Score[\s\S]*Phaser\.js[\s\S]*Arduino/);
       assert.equal(await page.locator('a[href="https://isla.to"]').count(), 1);
-      assert.match(await page.locator(".final-signal").innerText(), /PRÓXIMO CAPÍTULO[\s\S]*EM[\s\S]*CONSTRUÇÃO[\s\S]*SÓ O COMEÇO/);
+      assert.match(await page.locator(".thread-overview .final-signal").textContent(), /PRÓXIMO CAPÍTULO[\s\S]*EM[\s\S]*CONSTRUÇÃO[\s\S]*SÓ O COMEÇO/);
       await page.getByRole("link", { name: "Vamos conversar", exact: false }).first().click();
       await page.waitForFunction(() => document.querySelector(".thread-experience").dataset.activeChapter === "6");
       await page.locator(".thread-stack summary").click();

@@ -15,10 +15,12 @@ export default function ProjectDossier({ project }: { project: Project }) {
         <p>{project.description}</p>
       </div>
       <ol className="dossier-facts">
+        <li className="dossier-facts-label mono">O QUE VALE SABER</li>
         {project.facts.map((fact, index) => <li key={fact}><span className="mono">0{index + 1}</span><p>{fact}</p></li>)}
       </ol>
       <div className="dossier-flow" aria-label={`Fluxo do projeto ${project.name}`}>
-        {project.flow.map((step, index) => <span key={step}><b className="mono">{step}</b>{index < project.flow.length - 1 && <i aria-hidden="true">→</i>}</span>)}
+        <b className="mono dossier-flow-label">FLUXO</b>
+        {project.flow.map((step, index) => <span key={step}><b>{step}</b>{index < project.flow.length - 1 && <i aria-hidden="true">→</i>}</span>)}
       </div>
       <dl className="dossier-meta">
         <div><dt className="mono">MINHA PARTICIPAÇÃO</dt><dd>{project.role}</dd></div>

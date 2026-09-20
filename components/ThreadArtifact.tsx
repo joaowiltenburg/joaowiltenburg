@@ -22,5 +22,8 @@ export function ThreadOverview() {
     { x:500,y:1700,label:"2025 · Flamengo 3x3",id:"atletas" }, { x:325,y:2250,label:"2026 · FIAP + LockIN",id:"fiap" },
     { x:500,y:2800,label:"Maio de 2026 · isla.to",id:"isla" },
   ];
-  return <nav className="thread-overview" aria-label="Revisitar o percurso"><svg viewBox="0 480 1560 2460" role="group" aria-label="De 2023 a 2026: Alura e Wiltenburg Labs, ProRecipe, Flamengo 3x3, FIAP com LockIN Fight e isla.to."><path d={threadSvgPath} />{nodes.map(node => <a href={`#capitulo-${node.id}`} key={node.id} aria-label={`Revisitar ${node.label}`}><rect x={node.x - 60} y={node.y - 130} width="600" height="260" fill="transparent" /><circle cx={node.x} cy={node.y} r="34" /><text x={node.x + 65} y={node.y + 15}>{node.label}</text></a>)}</svg></nav>;
+  return <nav className="thread-overview" aria-label="Revisitar o percurso"><svg viewBox="0 480 1560 3040" role="group" aria-label="De 2023 a 2026: Alura e Wiltenburg Labs, ProRecipe, Flamengo 3x3, FIAP com LockIN Fight e isla.to."><path d={threadSvgPath} />{nodes.map(node => <a href={`#capitulo-${node.id}`} key={node.id} aria-label={`Revisitar ${node.label}`}><rect x={node.x - 60} y={node.y - 130} width="600" height="260" fill="transparent" /><circle cx={node.x} cy={node.y} r="34" /><text x={node.x + 65} y={node.y + 15}>{node.label}</text></a>)}
+    <path className="overview-next" d="M500 2800V3080" />
+    <g className="final-signal"><rect x="150" y="3080" width="700" height="400" /><text x="500" y="3160">PRÓXIMO CAPÍTULO</text><text className="signal-strong" x="500" y="3280">EM</text><text className="signal-strong" x="500" y="3380">CONSTRUÇÃO</text><text x="500" y="3450">SÓ O COMEÇO</text></g>
+  </svg></nav>;
 }
