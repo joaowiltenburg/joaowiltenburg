@@ -7,3 +7,10 @@ out/
 research/vendor/
 artifacts/
 .DS_Store
+
+# Ferramentas e notas locais
+.claude/
+docs/
+research/
+AGENTS.md
+CLAUDE.md

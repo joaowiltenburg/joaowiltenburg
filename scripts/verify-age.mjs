@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { stripTypeScriptTypes } from "node:module";
 
-// Next resolves the server-only guard during builds. Omit it solely in this Node test.
+// O Next resolve o guard server-only na build. Aqui, só neste teste em Node, ele sai.
 const source = (await readFile(new URL("../app/age.ts", import.meta.url), "utf8")).replace('import "server-only";', "");
 const { currentAge } = await import(`data:text/javascript;base64,${Buffer.from(stripTypeScriptTypes(source)).toString("base64")}`);
 assert.equal(currentAge(new Date("2026-09-16T12:00:00Z")), 18);

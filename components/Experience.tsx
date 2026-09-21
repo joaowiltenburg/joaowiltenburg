@@ -80,7 +80,7 @@ export default function Experience() {
     if (!desktop || !animated) return;
     const lenis = new Lenis({ duration: .95, smoothWheel: true, anchors: false, respectReducedMotion: false });
     lenis.on("scroll", ScrollTrigger.update);
-    // Cancel wheel inertia before the browser performs a native anchor jump.
+    // Cancela a inércia da roda antes do salto nativo para a âncora.
     const anchorClick = (event: MouseEvent) => {
       if (event.target instanceof Element && event.target.closest('a[href^="#"]')) { lenis.stop(); lenis.start(); }
     };

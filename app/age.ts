@@ -1,6 +1,6 @@
 import "server-only";
 
-// Kept on the server. Only the computed age is rendered in the page.
+// Fica no servidor. A página só recebe a idade já calculada.
 export function currentAge(now = new Date()) {
   const parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", year: "numeric", month: "numeric", day: "numeric" }).formatToParts(now);
   const number = (type: string) => Number(parts.find(part => part.type === type)?.value);

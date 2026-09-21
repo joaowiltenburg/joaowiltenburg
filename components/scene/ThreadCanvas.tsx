@@ -35,7 +35,7 @@ function Route({ progress, paused, onReady }: Omit<Props, "onError">) {
     const view = threadView(progress.current);
     const ortho = camera as THREE.OrthographicCamera;
     const blend = 1 - Math.exp(-Math.min(delta, .05) * 8);
-    // Leave a calm reading column on the left. At the end reveal the entire route.
+    // Deixa a coluna de leitura livre à esquerda. No fim, revela o percurso inteiro.
     const width = view.span * size.width / size.height;
     const x = view.x - width * .22 * (1 - view.overview);
     camera.position.x = THREE.MathUtils.lerp(camera.position.x, x, blend);

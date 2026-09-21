@@ -38,7 +38,7 @@ export default function ThreadJourney({ age }: { age: number }) {
         setChoice(saved === null ? null : saved === "true");
         if (saved !== null) localStorage.setItem("portfolio-motion-v2", saved);
         sessionStorage.removeItem("portfolio-motion-v2");
-      } catch { /* Use the system preference when storage is unavailable. */ }
+      } catch { /* Sem storage disponível, vale a preferência do sistema. */ }
     };
     const storage = (event: StorageEvent) => { if (event.key === "portfolio-motion-v2" || event.key === null) sync(); };
     const visibility = () => setVisible(!document.hidden);
@@ -108,7 +108,7 @@ export default function ThreadJourney({ age }: { age: number }) {
 
   const toggleMotion = () => {
     setChoice(!animated);
-    try { localStorage.setItem("portfolio-motion-v2", String(!animated)); } catch { /* Keep the current choice in memory. */ }
+    try { localStorage.setItem("portfolio-motion-v2", String(!animated)); } catch { /* Mantém a escolha só em memória. */ }
   };
   const total = threadChapters.length + 1;
   const current = active === 0 ? "O fio da história" : active === total ? "O caminho continua" : threadChapters[active - 1]?.label;

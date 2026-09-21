@@ -7,7 +7,7 @@ import { studioCode } from "@/data/story";
 
 type Props = { progress: MutableRefObject<number>; paused: boolean; onReady: (ready: boolean) => void; onContextLost: () => void };
 const dimensions = [[4.4, 3.2], [3.65, 3.8], [3.25, 2.8]];
-// Position, rotation and scale for code, product and growth at each scroll stop.
+// Posição, rotação e escala de código, produto e growth em cada parada do scroll.
 const poses = [
   [[-.95, -.18, .85, -.07, .17, .12, 1], [1.25, .9, -.5, .13, -.2, -.11, .9], [1.95, -1.2, 1.1, -.05, -.14, .08, .86]],
   [[-2.0, 1.0, -.6, -.16, .4, .22, .72], [-.05, -.05, 1.1, .04, -.04, .04, 1], [2.45, -.9, -.2, .1, -.35, -.19, .77]],
@@ -45,7 +45,7 @@ function makeTexture(index: number) {
     [280, 202, 136].forEach((width, i) => line(425, 603 + i * 69, 425 + width, 603 + i * 69));
     line(76, 887, w - 76, 887);
     text("Explorar", 76, 969, 36); text("↗", w - 125, 969, 46);
-    // A cursor and small handles suggest an interface being designed, not a live app.
+    // Cursor e alças sugerem uma interface sendo desenhada, não um app rodando.
     c.strokeStyle = "#617e6a"; c.strokeRect(59, 545, 324, 267);
     [[54, 540], [378, 540], [54, 807], [378, 807]].forEach(([x, y]) => { c.fillStyle = "#617e6a"; c.fillRect(x, y, 10, 10); });
   } else {
