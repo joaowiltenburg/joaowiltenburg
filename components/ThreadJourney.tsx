@@ -25,7 +25,10 @@ export default function ThreadJourney({ age }: { age: number }) {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const [active, setActive] = useState(0);
-  const animated = choice ?? systemMotion ?? false;
+  // O percurso vem ligado para todo mundo. Quem pede redução no sistema recebe
+  // uma versão calma: o fio ainda acompanha o scroll, sem inércia nem parallax.
+  const animated = choice ?? true;
+  const gentle = choice === null && systemMotion === false;
   const canvasEnabled = desktop && animated && loadScene && !failed;
 
   useEffect(() => {
@@ -78,7 +81,7 @@ export default function ThreadJourney({ age }: { age: number }) {
         setActive(chapter);
       };
       ScrollTrigger.create({ trigger: root.current, start: "top top", end: "bottom bottom", onUpdate: update, onRefresh: () => { positions = steps.map(step => step.getBoundingClientRect().top + scrollY); update(); } });
-      if (animated) {
+      if (animated && !gentle) {
         gsap.fromTo(".thread-intro .thread-copy > *", { y: 26 }, { y: 0, duration: 1.25, stagger: .09, ease: "power3.out" });
         gsap.utils.toArray<HTMLElement>(".thread-artifact").forEach(element => {
           gsap.fromTo(element, { y: 65, rotate: -5, scale: .92 }, { y: -55, rotate: 3, scale: 1.035, ease: "none", scrollTrigger: { trigger: element.closest(".thread-step"), start: "top bottom", end: "bottom top", scrub: .8 } });
@@ -99,12 +102,12 @@ export default function ThreadJourney({ age }: { age: number }) {
     let lenis: Lenis | undefined;
     const tick = (time: number) => lenis?.raf(time * 1000);
     const anchor = (event: MouseEvent) => { if (event.target instanceof Element && event.target.closest('a[href^="#"]')) { lenis?.stop(); lenis?.start(); } };
-    if (animated) {
+    if (animated && !gentle) {
       lenis = new Lenis({ duration: .9, smoothWheel: true, anchors: false, respectReducedMotion: false });
       lenis.on("scroll", ScrollTrigger.update); gsap.ticker.add(tick); window.addEventListener("click", anchor);
     }
     return () => { resize.disconnect(); context.revert(); gsap.ticker.remove(tick); window.removeEventListener("click", anchor); lenis?.destroy(); };
-  }, [animated, desktop, systemMotion]);
+  }, [animated, gentle, desktop, systemMotion]);
 
   const toggleMotion = () => {
     setChoice(!animated);

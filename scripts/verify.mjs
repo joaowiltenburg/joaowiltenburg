@@ -26,7 +26,9 @@ try {
       assert.equal((await page.goto(url, { waitUntil: "networkidle" })).status(), 200);
       await page.waitForFunction(() => document.documentElement.dataset.motion);
       await page.evaluate(() => document.fonts.ready);
-      if (name === "desktop") await page.locator(".scene-art-ready canvas").waitFor({ timeout: 30000 });
+      // O movimento vem ligado mesmo para quem pede redução, então a cena 3D depende só da largura.
+      await page.waitForFunction(() => document.documentElement.dataset.motion === "full");
+      if (options.viewport.width > 900) await page.locator(".scene-art-ready canvas").waitFor({ timeout: 30000 });
       else assert.equal(await page.locator("canvas").count(), 0);
       assert.equal(await page.locator("h1").count(), 1);
       assert.equal(await page.locator("[data-thread-step]").count(), 7);
@@ -59,8 +61,7 @@ try {
       await page.mouse.wheel(0, 220);
       await page.waitForTimeout(1250);
       const after = await page.locator(".thread-svg").getAttribute("viewBox");
-      if (options.reducedMotion === "reduce") assert.equal(after, before, "A preferência reduzida mantém a câmera estática");
-      else assert.notEqual(after, before, "O percurso precisa responder continuamente ao scroll, antes da mudança de capítulo");
+      assert.notEqual(after, before, "O percurso precisa responder continuamente ao scroll, antes da mudança de capítulo");
       for (const [index, id] of ["labs", "proreceita", "atletas", "fiap", "isla"].entries()) {
         await page.evaluate(id => document.getElementById(`capitulo-${id}`).scrollIntoView({ block: "start" }), id);
         await page.waitForFunction(index => document.querySelector(".thread-experience").dataset.activeChapter === String(index + 1), index);
@@ -93,16 +94,16 @@ try {
       if (name === "compact-preview") {
         const other = await context.newPage();
         await other.goto(url, { waitUntil: "networkidle" });
-        await page.getByRole("button", { name: "Ativar movimento" }).click();
-        await other.waitForFunction(() => document.documentElement.dataset.motion === "full");
+        await page.getByRole("button", { name: "Pausar movimento" }).click();
+        await other.waitForFunction(() => document.documentElement.dataset.motion === "reduced");
         await other.reload({ waitUntil: "networkidle" });
-        await other.waitForFunction(() => document.documentElement.dataset.motion === "full");
+        await other.waitForFunction(() => document.documentElement.dataset.motion === "reduced");
         const view = await other.locator(".thread-svg").getAttribute("viewBox");
         await other.mouse.wheel(0, 250);
         await other.waitForTimeout(1200);
-        assert.notEqual(await other.locator(".thread-svg").getAttribute("viewBox"), view);
-        await page.getByRole("button", { name: "Pausar movimento" }).click();
-        await other.waitForFunction(() => document.documentElement.dataset.motion === "reduced");
+        assert.equal(await other.locator(".thread-svg").getAttribute("viewBox"), view, "Pausado por escolha, a câmera fica parada");
+        await page.getByRole("button", { name: "Ativar movimento" }).click();
+        await other.waitForFunction(() => document.documentElement.dataset.motion === "full");
         await other.close();
       }
       if (name === "mobile") {
