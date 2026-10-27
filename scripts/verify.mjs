@@ -36,8 +36,8 @@ try {
       assert.equal(await page.locator(".thread-chapter .thread-project").count(), 5);
       assert.equal(await page.locator(".thread-overview a").count(), 5);
       assert.match(await page.locator("#capitulo-labs").innerText(), /2023[\s\S]*Alura[\s\S]*WordPress[\s\S]*Wiltenburg Labs/i);
-      assert.match(await page.locator("#capitulo-fiap .thread-copy").innerText(), /reta final do LockIN Fight/);
-      assert.doesNotMatch(await page.locator("main").innerText(), /finalista/i, "O NEXT ainda não tem resultado");
+      assert.match(await page.locator("#capitulo-fiap .thread-copy").innerText(), /30 melhores do Future Makers/);
+      assert.match(await page.locator("#capitulo-fiap .thread-copy").innerText(), /apresentamos no NEXT/);
       assert.match(await page.locator("#capitulo-atletas .school-dossier").textContent(), /Reinaldo[\s\S]*15\+[\s\S]*RANKING INDIVIDUAL/);
       assert.match(await page.locator("#capitulo-fiap .education-choice").innerText(), /2 FEDERAIS[\s\S]*distância[\s\S]*FIAP/i);
       assert.doesNotMatch(await page.locator("#inicio").innerText(), /ProRecipe|palha|14 mil/i);

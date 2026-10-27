@@ -95,13 +95,13 @@ export const projects: Project[] = [
   {
     id: "lockin-fight",
     name: "LockIN Fight",
-    description: "Experiência competitiva que estou desenvolvendo em equipe na FIAP. Antes da partida, cada pessoa responde um formulário sobre hábitos e mede o BPM; os dois viram um Force Score que entra no jogo.",
+    description: "Um jogo de luta em que o seu batimento cardíaco decide a força do golpe. Antes da luta, um formulário sobre hábitos de saúde define a força base; durante a luta, um sensor lê o BPM em tempo real, e quem fica mais calmo bate mais forte.",
     role: "Desenvolvimento do projeto com o time",
-    stage: "2026 · Em desenvolvimento na FIAP",
+    stage: "2026 · Top 30 do Future Makers, FIAP",
     stack: ["Next.js", "Node.js", "Express", "Firestore", "Phaser.js", "Arduino", "Web Serial", "Python"],
     facts: [
-      "Com o Force Score definido, a luta conecta jogo, sensores e bonecos físicos.",
-      "Estamos na reta final. Em outubro saberemos se apresentamos no NEXT.",
+      "Mais de 300 equipes se inscreveram no Future Makers, a iniciação científica da FIAP. Ficamos entre as 30 que foram pro NEXT.",
+      "Apresentamos ao vivo no NEXT, em 24 de outubro de 2026, com o time: Stephane, Deivid, Jacqueline e Guilherme. Valeu, time.",
     ],
     flow: ["Formulário", "BPM", "Force Score", "Luta"],
     url: null,
